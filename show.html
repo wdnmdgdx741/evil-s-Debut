@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>attack</title>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+</head>
+
+<body class="container">
+  <div class="page-header container">
+    <h1 style="text-align: center;">靶场 <small>sql注入</small></h1>
+  </div>
+  <form class="form-inline"  role="search" action="./search.php" method="POST">
+    <div class="form-group" style="margin-left: 340px;">
+      <div class="input-group">
+        <input type="text" class="form-control" name='search' placeholder="关键字">    
+    </div>
+    </div>
+    <button type="submit" class="btn btn-default">查询</button>
+    <a href="./add.php" class="btn btn-primary btn-default" role="button">添加</a>
+</form>
+    <table class="table table-striped">
+      <tr>
+        <td>ID</td>
+        <td>用户名</td>
+        <td>年龄</td>
+        <td>国家</td>
+        <td>操作</td>
+      </tr>
+    <?php
+    foreach($data as $key => $value){
+    ?>
+      <tr>
+        <td><?php echo $value['id'];?></td>
+        <td><?php echo $value['name'];?></td>
+        <td><?php echo $value['age'];?></td>
+        <td><?php echo $value['className'];?></td>
+        <td><a href="./edit.php?id=<?php echo $value['id'];?>">修改</a> | <a href="./del.php?id=<?php echo $value['id'];?>">删除</a></td>
+      </tr>
+      <?php
+    }
+    ?>
+    </table>
+
+</body>
+
+</html>
